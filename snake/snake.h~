@@ -1,0 +1,120 @@
+#ifndef __SNAKE_H
+#define __SNAKE_H
+
+#include <cstdlib>
+#include <ctime>
+#include "SSDL.h"
+
+using namespace std;
+        
+enum direction {STOP = 0, LEFT, RIGHT, UP, DOWN};
+
+class Snake
+{
+    private:
+        int m_snake_width;
+        int m_snake_height;
+        int m_x_coord;
+        int m_y_coord;
+        int m_speed;
+
+        SSDL_Sprite m_sprite;
+
+        //enum direction {STOP = 0, LEFT, RIGHT, Up, DOWN};
+        direction m_dir;
+
+    public:
+
+        //constructors
+        Snake();
+        Snake(int snake_width, int snake_height, int x_coord, int y_coord, int speed, SSDL_Sprite sprite, direction dir);
+
+        //accessors
+        int snake_width() const;
+        int snake_height() const;
+        int x_coord() const;
+        int y_coord() const;
+        int speed() const;
+        direction dir() const;
+        
+        SSDL_Sprite& sprite();
+        
+        //enum direction {STOP = 0, LEFT, RIGHT, Up, DOWN};
+        //direction m_dir() const;
+
+        //mutators
+        void set_snake_width(const int snake_width);
+        void set_snake_height(const int snake_height);
+        void set_x_coord(const int x_coord);
+        void set_y_coord(const int y_coord);
+        void set_speed(const int speed);
+        void set_sprite(SSDL_Sprite sprite);
+
+        void set_dir(const direction dir);
+};
+
+class Apple
+{
+    private:
+        int m_apple_width;
+        int m_apple_height;
+        int m_x_coord;
+        int m_y_coord;
+
+        SSDL_Sprite m_sprite;
+
+    public:
+
+        void random(int window_width, int window_height)
+        {
+            m_x_coord = rand() % window_width;
+            m_y_coord = rand() % window_height;
+        }
+
+        //constructors
+        Apple();
+        Apple(int apple_width, int apple_height, int x_coord, int y_coord, SSDL_Sprite sprite);
+
+        //accessors
+        int apple_width() const;
+        int apple_height() const;
+        int x_coord() const;
+        int y_coord() const;
+        SSDL_Sprite& sprite();
+
+        //mutators
+        void set_apple_width(const int apple_width);
+        void set_apple_height(const int apple_height);
+        void set_x_coord(const int x_coord);
+        void set_y_coord(const int y_coord);
+        void set_sprite(SSDL_Sprite sprite);
+};
+
+class Game
+{
+    private:
+        int m_window_width;
+        int m_window_height;
+        bool m_running;
+        int m_score;
+
+    public:
+        
+        //constructors
+        Game();
+        Game(int window_widh, int window_height, bool running, int score);
+
+        //accessors
+        int window_width() const;
+        int window_height() const;
+        bool running() const;
+        int score() const;
+
+        //mutators
+        void set_window_width(const int window_width);
+        void set_window_height(const int window_height);
+        void set_running(const bool running);
+        void set_score(const int score);
+};
+
+#endif
