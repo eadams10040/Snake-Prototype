@@ -1,6 +1,6 @@
 // 9/11/25
 // Snake the game made with SSDL
-// Credit: "C++ Tutorial 18 - Simple Snake Game (Part 2)" by NVitanovic on Youtube
+// Credit: NVitanovic on Youtube
 
 #include "SSDL.h"
 #include <ctime>
